@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexionBD {
+public class ConexionMySQL {
     // Configuración de la base de datos
     private static final String URL = "jdbc:mysql://localhost:3306/copamanager_bd"; // URL de la base de datos
     private static final String USER = "root"; // Usuario de la base de datos

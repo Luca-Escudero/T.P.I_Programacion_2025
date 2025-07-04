@@ -10,6 +10,7 @@ import vistas.*;
 import java.util.List;
 import java.util.Map;
 
+
 public class ControladorEquipo {
     private VistaEquipo vistaEquipo;
     private VistaMenu vistaMenu;

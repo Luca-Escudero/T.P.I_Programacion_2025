@@ -6,6 +6,7 @@ import vistas.*;
 
 import java.util.List;
 
+
 public class ControladorEntrenador {
     private VistaEntrenador vistaEntrenador;
     private ControladorBaseDeDatos controladorBaseDeDatos;

@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "CopaManager\\src"
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\Users\\lucae\\Downloads\\mysql-connector-j-9.2.0\\mysql-connector-j-9.2.0.jar"
+    ]
+}
