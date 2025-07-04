@@ -5,12 +5,14 @@ public class Equipo {
     private String nombre;
     private String pais;
     private Entrenador entrenador;
+    private int idCampeonato;
     
-    public Equipo(int idEquipo, String nombre, String pais, Entrenador entrenador) {
+    public Equipo(int idEquipo, String nombre, String pais, Entrenador entrenador, int idCampeonato) {
         this.idEquipo = idEquipo;
         this.nombre = nombre;
         this.pais = pais;
         this.entrenador = entrenador;
+        this.idCampeonato = idCampeonato;
     }
 
     public int getIdEquipo() {
@@ -45,8 +47,24 @@ public class Equipo {
         this.entrenador = entrenador;
     }
 
-    
+    public int getIdCampeonato() {
+        return idCampeonato;
+    }
 
+    public void setIdCampeonato(int idCampeonato) {
+        this.idCampeonato = idCampeonato;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipo{" +
+                "idEquipo=" + idEquipo +
+                ", nombre='" + nombre + '\'' +
+                ", pais='" + pais + '\'' +
+                ", entrenador=" + entrenador +
+                ", idCampeonato=" + idCampeonato +
+                '}';
+    }
     
 
 }

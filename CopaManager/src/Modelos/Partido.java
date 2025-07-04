@@ -1,6 +1,7 @@
 package modelos;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat; 
 
 public class Partido {
     private int idPartido;
@@ -8,13 +9,14 @@ public class Partido {
     private Equipo equipoVisitante;
     private Date fechaHora;
     private Resultado resultado;
+    private int idCampeonato;
 
-    public Partido(int idPartido, Equipo equipoLocal, Equipo equipoVisitante, Date fechaHora, Resultado resultado) {
-        this.idPartido = idPartido;
-        this.equipoLocal = equipoLocal;
-        this.equipoVisitante = equipoVisitante;
+    public Partido(int id, Equipo local, Equipo visitante, Date fechaHora, int idCampeonato) {
+        this.idPartido = id;
+        this.equipoLocal = local;
+        this.equipoVisitante = visitante;
         this.fechaHora = fechaHora;
-        this.resultado = resultado;
+        this.idCampeonato = idCampeonato;
     }
 
     public int getIdPartido() {
@@ -56,7 +58,50 @@ public class Partido {
     public void setResultado(Resultado resultado) {
         this.resultado = resultado;
     }
-    
-    
 
+    public int getIdCampeonato() {
+        return idCampeonato;
+    }
+
+    public void setIdCampeonato(int idCampeonato) {
+        this.idCampeonato = idCampeonato;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String fechaFormateada = (fechaHora != null) ? formatter.format(fechaHora) : "Fecha no definida";
+
+       String resultadoStr = "Sin resultado";
+        if (resultado != null) {
+            resultadoStr = resultado.getGolesLocal() + " - " + resultado.getGolesVisitante();
+        }
+
+        return String.format("ID: %d | %s vs %s | Fecha: %s | Resultado: %s | Campeonato ID: %d",
+                             idPartido,
+                             equipoLocal.getNombre(),
+                             equipoVisitante.getNombre(),
+                             fechaFormateada,
+                             resultadoStr,
+                             idCampeonato);
+    }
+
+    public String getEstado() {
+        if (resultado != null) {
+            return "Finalizado";
+        }
+        Date now = new Date();
+        if (fechaHora != null && fechaHora.after(now)) {
+            return "Pendiente";
+        }
+        return "En curso";
+    }
+
+    public String getFecha() {
+        if (fechaHora == null) {
+            return "Fecha no definida";
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        return formatter.format(fechaHora);
+    }
 }

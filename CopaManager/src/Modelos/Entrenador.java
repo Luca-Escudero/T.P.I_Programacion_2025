@@ -45,8 +45,14 @@ public class Entrenador {
         this.nacionalidad = nacionalidad;
     }
 
-    
-
-    
+    @Override
+    public String toString() {
+        return "Entrenador{" +
+                "idEntrenador=" + idEntrenador +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", nacionalidad='" + nacionalidad + '\'' +
+                '}';
+    }
 
 }
