@@ -1,6 +1,6 @@
-package vistas;
+package vista;
 
-import modelos.Campeonato;
+import modelo.Campeonato;
 
 import java.util.List;
 import java.util.Scanner;

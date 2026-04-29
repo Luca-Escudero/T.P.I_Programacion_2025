@@ -1,7 +1,7 @@
-package vistas;
+package vista;
 
-import modelos.Partido;
-import modelos.Equipo;
+import modelo.Partido;
+import modelo.Equipo;
 
 import java.util.List;
 import java.util.Scanner;

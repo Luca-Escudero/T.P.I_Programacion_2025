@@ -1,11 +1,12 @@
-package controladores;
+package controlador;
 
-import consultasSQL.*;
-import modelos.*;
-import vistas.VistaCampeonato;
-import vistas.VistaMenu;
+import modelo.Campeonato;
+import vista.VistaCampeonato;
+import vista.VistaMenu;
 
 import java.util.List;
+
+import consultaSQL.ControladorBaseDeDatos;
 
 public class ControladorCampeonato {
     private VistaCampeonato vistaCampeonato;

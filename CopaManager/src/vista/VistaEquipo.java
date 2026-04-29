@@ -1,6 +1,6 @@
-package vistas;
+package vista;
 
-import modelos.Equipo;
+import modelo.Equipo;
 
 import java.util.List;
 import java.util.Map;

@@ -1,7 +1,7 @@
-package consultasSQL;
+package consultaSQL;
 
 
-import modelos.*;
+import modelo.*;
 import conexion.ConexionMySQL;
 
 import java.sql.*;
@@ -86,15 +86,15 @@ public class ControladorBaseDeDatos {
     }
 
     public void guardarCampeonato(Campeonato campeonato) {
-        String sql = "INSERT INTO campeonatos (nombre, anio, estado, puntosVictoria, puntosEmpate, puntosDerrota) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO campeonatos (nombre, anio, estado) VALUES (?, ?, ?)";
         try (Connection conn = ConexionMySQL.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, campeonato.getNombre());
             stmt.setInt(2, campeonato.getAnio());
             stmt.setString(3, campeonato.getEstado());
-            stmt.setNull(4, Types.INTEGER); // puntosVictoria (ya no se usan)
-            stmt.setNull(5, Types.INTEGER); // puntosEmpate (ya no se usan)
-            stmt.setNull(6, Types.INTEGER); // puntosDerrota (ya no se usan)
+            // stmt.setNull(4, Types.INTEGER); // puntosVictoria (ya no se usan)
+            // stmt.setNull(5, Types.INTEGER); // puntosEmpate (ya no se usan)
+            // stmt.setNull(6, Types.INTEGER); // puntosDerrota (ya no se usan)
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
@@ -140,27 +140,37 @@ public class ControladorBaseDeDatos {
         }
     }
 
-    public void guardarPartido(Partido partido) {
-        String sql = "INSERT INTO partidos (idEquipoLocal, idEquipoVisitante, fechaHora, idCampeonato, golesLocal, golesVisitante) VALUES (?, ?, ?, ?, ?, ?)";
+   public void guardarPartido(Partido partido) {
+        String sql = "INSERT INTO partidos (idEquipoLocal, idEquipoVisitante, fechaHora, idCampeonato, golesLocal, golesVisitante, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
         try (Connection conn = ConexionMySQL.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            
             stmt.setInt(1, partido.getEquipoLocal().getIdEquipo());
             stmt.setInt(2, partido.getEquipoVisitante().getIdEquipo());
             stmt.setTimestamp(3, new Timestamp(partido.getFechaHora().getTime()));
             stmt.setInt(4, partido.getIdCampeonato());
+
+            
             if (partido.getResultado() != null) {
                 stmt.setInt(5, partido.getResultado().getGolesLocal());
                 stmt.setInt(6, partido.getResultado().getGolesVisitante());
             } else {
-                stmt.setNull(5, Types.INTEGER);
+                stmt.setNull(5, Types.INTEGER); 
                 stmt.setNull(6, Types.INTEGER);
             }
+
+            stmt.setString(7,partido.getEstado());
+
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                partido.setIdPartido(rs.getInt(1));
+            
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    partido.setIdPartido(rs.getInt(1));
+                }
             }
         } catch (SQLException e) {
+            System.err.println("Error al guardar partido: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -183,7 +193,10 @@ public class ControladorBaseDeDatos {
 
                 if (rs.getObject("golesLocal") != null && rs.getObject("golesVisitante") != null) {
                     partido.setResultado(new Resultado(rs.getInt("golesLocal"), rs.getInt("golesVisitante")));
+                } else {
+                    partido.setResultado(null);
                 }
+
                 partidos.add(partido);
             }
         } catch (SQLException e) {

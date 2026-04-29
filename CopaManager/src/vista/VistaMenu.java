@@ -1,9 +1,9 @@
-package vistas;
+package vista;
 
 import java.util.List;
 import java.util.Scanner;
 
-import modelos.Campeonato;
+import modelo.Campeonato;
 
 public class VistaMenu {
     private Scanner escaner;

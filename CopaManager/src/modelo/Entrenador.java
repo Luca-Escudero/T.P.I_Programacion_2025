@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 public class Entrenador {
     private int idEntrenador;

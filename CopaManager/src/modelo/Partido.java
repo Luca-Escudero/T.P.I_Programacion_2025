@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 import java.util.Date;
 import java.text.SimpleDateFormat; 
@@ -10,6 +10,9 @@ public class Partido {
     private Date fechaHora;
     private Resultado resultado;
     private int idCampeonato;
+    
+   
+   
 
     public Partido(int id, Equipo local, Equipo visitante, Date fechaHora, int idCampeonato) {
         this.idPartido = id;
@@ -17,7 +20,10 @@ public class Partido {
         this.equipoVisitante = visitante;
         this.fechaHora = fechaHora;
         this.idCampeonato = idCampeonato;
+    
     }
+
+    
 
     public int getIdPartido() {
         return idPartido;
@@ -86,15 +92,17 @@ public class Partido {
                              idCampeonato);
     }
 
-    public String getEstado() {
-        if (resultado != null) {
-            return "Finalizado";
-        }
+    
+
+     public String getEstado() {
+         if (resultado != null) {
+             return "Finalizado";
+         }
         Date now = new Date();
         if (fechaHora != null && fechaHora.after(now)) {
             return "Pendiente";
-        }
-        return "En curso";
+       }
+         return "En curso";
     }
 
     public String getFecha() {
@@ -104,4 +112,17 @@ public class Partido {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         return formatter.format(fechaHora);
     }
+
+
+
+   
+
+    
+    
+
+    
+
+
+
+   
 }

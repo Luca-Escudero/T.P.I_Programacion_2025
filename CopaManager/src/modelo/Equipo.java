@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 public class Equipo {
     private int idEquipo;

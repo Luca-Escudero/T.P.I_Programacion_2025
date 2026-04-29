@@ -1,10 +1,10 @@
-package vistas;
+package vista;
 
-import modelos.Entrenador;
+import modelo.Entrenador;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class VistaEntrenador {
     private Scanner escaner;

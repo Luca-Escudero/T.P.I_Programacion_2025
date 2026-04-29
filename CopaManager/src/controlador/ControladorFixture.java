@@ -1,9 +1,9 @@
-package controladores;
+package controlador;
 
-import consultasSQL.*;
-import modelos.Campeonato;
-import modelos.Partido;
-import vistas.*;
+import consultaSQL.*;
+import modelo.Campeonato;
+import modelo.Partido;
+import vista.*;
 
 import java.util.List;
 

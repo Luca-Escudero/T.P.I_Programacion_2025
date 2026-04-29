@@ -1,7 +1,7 @@
-package controladores;
+package controlador;
 
-import consultasSQL.*;
-import vistas.VistaMenu;
+import consultaSQL.*;
+import vista.VistaMenu;
 
 public class ControladorMenu {
     private VistaMenu vistaMenu;

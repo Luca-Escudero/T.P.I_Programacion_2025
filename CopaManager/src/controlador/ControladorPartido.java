@@ -1,9 +1,9 @@
-package controladores;
+package controlador;
 
-import consultasSQL.*;
-import modelos.*;
-import vistas.VistaMenu;
-import vistas.VistaPartido;
+import consultaSQL.*;
+import modelo.*;
+import vista.VistaMenu;
+import vista.VistaPartido;
 
 import java.util.Date;
 import java.util.List;

@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 public class Resultado {
     private int golesLocal;

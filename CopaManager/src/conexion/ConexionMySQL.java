@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class ConexionMySQL {
     // Configuración de la base de datos
-    private static final String URL = "jdbc:mysql://localhost:3306/copamanager_bd"; // URL de la base de datos
+    private static final String URL = "jdbc:mysql://localhost:3306/copamanagerbd"; // URL de la base de datos
     private static final String USER = "root"; // Usuario de la base de datos
-    private static final String PASSWORD = "Luca1234"; // Contraseña de la base de datos
+    private static final String PASSWORD = "admin"; // Contraseña de la base de datos
 
     // Método para obtener la conexión a la base de datos
     public static Connection getConnection() throws SQLException {

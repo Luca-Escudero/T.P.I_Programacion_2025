@@ -1,8 +1,8 @@
-package controladores;
+package controlador;
 
-import consultasSQL.*;
-import modelos.Entrenador;
-import vistas.*;
+import consultaSQL.*;
+import modelo.Entrenador;
+import vista.*;
 
 import java.util.List;
 
